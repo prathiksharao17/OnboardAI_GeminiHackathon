@@ -1,12 +1,12 @@
 ## OnboardAI
 
-> Built for the **Google Gemini Hackathon 2026**
+> Built for the **Gemini Hackathon 2026**
 
 OnboardAI turns a **public GitHub repository URL** into a short, narrated **onboarding video (2–3 minutes)** that explains what a project does, how it is structured, how to run it, and where to start exploring the code.
 
 The goal is to make **GitHub repositories easier to understand** by converting real codebases into clear, visual walkthroughs—similar to having someone explain the project to you step by step.
 
----
+
 
 ## What This App Does
 
@@ -22,7 +22,7 @@ The goal is to make **GitHub repositories easier to understand** by converting r
    - Structured visual frames
    - A final **MP4 onboarding video**
 
----
+
 
 ## Features
 
@@ -48,7 +48,6 @@ The goal is to make **GitHub repositories easier to understand** by converting r
 - ✅ **Automated Video Generation Pipeline**  
   Combines visuals and narration into a final MP4 onboarding video
 
----
 
 ## Who Is This For?
 
@@ -71,7 +70,7 @@ It is especially useful for:
 - ⚡ **Hackathon Teams & Freelancers**  
   Rapidly evaluate repositories and onboard collaborators faster.
 
----
+
 
 ## Tech Stack
 
@@ -99,7 +98,7 @@ It is especially useful for:
 - **Node.js**
 - **Next.js API Routes**
 
----
+
 
 ## API Routes
 
@@ -112,7 +111,7 @@ It is especially useful for:
 - `POST /api/video/render`  
   Generates visual frames, audio narration, and assembles the final video
 
----
+
 
 
 ## Getting Started
