@@ -34,7 +34,13 @@ export async function POST(req: Request) {
       repo: { owner: ref.owner, repo: ref.repo, branch, defaultBranch },
       folderTree: allPaths.slice(0, 200),
       readme: readme ? { path: readme.path, content: truncate(readme.content, 14000) } : null,
-      files: files.map((f) => ({ path: f.path, content: truncate(f.content, 12000) })),
+      files: files
+  .filter((f): f is { path: string; content: string } => f !== null)
+  .map((f) => ({
+    path: f.path,
+    content: truncate(f.content, 12000),
+  })),
+
     };
 
     const model = body.model ?? DEFAULT_ONBOARDING_MODEL;
