@@ -1,14 +1,119 @@
 ## OnboardAI
 
-OnboardAI converts a **public GitHub repository URL** into a short, narrated onboarding video (2–3 minutes) that explains the project's purpose, architecture, setup, and where new contributors should start.
+> Built for the **Google Gemini Hackathon 2026**
 
-### Features
+OnboardAI turns a **public GitHub repository URL** into a short, narrated **onboarding video (2–3 minutes)** that explains what a project does, how it is structured, how to run it, and where to start exploring the code.
 
-- ✅ **GitHub Repository Ingestion**: Automatically fetches README and key code files
-- ✅ **AI-Powered Analysis**: Uses Gemini 3 to understand codebase architecture
-- ✅ **Structured Script Generation**: Creates scene-by-scene onboarding scripts with narration
-- ✅ **Visual Planning**: Suggests visuals for each scene (code highlights, diagrams, etc.)
-- ✅ **Video Generation Pipeline**: Ready for TTS audio + visual rendering → MP4 output
+The goal is to make **GitHub repositories easier to understand** by converting real codebases into clear, visual walkthroughs—similar to having someone explain the project to you step by step.
+
+---
+
+## What This App Does
+
+1. Accepts a **public GitHub repository URL**
+2. Fetches key repository files (README, config files, important source files)
+3. Uses **Google Gemini 3** to:
+   - Understand the codebase
+   - Infer architecture and data flow
+   - Identify setup steps and entry points
+4. Generates a **scene-by-scene onboarding script**
+5. Converts the script into:
+   - Narrated audio (TTS)
+   - Structured visual frames
+   - A final **MP4 onboarding video**
+
+---
+
+## Features
+
+- ✅ **GitHub Repository Ingestion**  
+  Automatically fetches README, dependency files, and key source files from public GitHub repositories
+
+- ✅ **AI-Powered Code Understanding**  
+  Uses **Gemini 3** for long-context reasoning over real-world codebases
+
+- ✅ **Structured Onboarding Script**  
+  Scene-by-scene narration covering:
+  - Project overview
+  - Architecture
+  - Setup instructions
+  - Contribution and exploration starting points
+
+- ✅ **Visual-First Video Design**  
+  Video frames highlight:
+  - Architecture flow
+  - Key concepts
+  - Important ideas (without repeating narration text)
+
+- ✅ **Automated Video Generation Pipeline**  
+  Combines visuals and narration into a final MP4 onboarding video
+
+---
+
+## Who Is This For?
+
+OnboardAI is designed for **anyone who wants to quickly understand what a GitHub repository does**, not just experienced developers.
+
+It is especially useful for:
+
+- 👩‍💻 **Developers & New Hires**  
+  Get up to speed on an unfamiliar codebase in minutes instead of hours.
+
+- 🎓 **Students & Learners**  
+  Understand coursework repositories, open-source projects, and real-world codebases through clear, narrated explanations.
+
+- 🌍 **Open-Source Contributors**  
+  Quickly grasp project structure, setup steps, and where to start contributing.
+
+- 🧠 **Non-Technical or Semi-Technical Users**  
+  Get a high-level understanding of what a project does without reading thousands of lines of code.
+
+- ⚡ **Hackathon Teams & Freelancers**  
+  Rapidly evaluate repositories and onboard collaborators faster.
+
+---
+
+## Tech Stack
+
+### Frontend
+- **Next.js (App Router)**
+- **React**
+- **Tailwind CSS**
+
+### AI & Reasoning
+- **Google Gemini 3 (Flash / Pro)**
+  - Long-context code understanding
+  - Structured JSON output
+  - Script and scene generation
+
+### GitHub Integration
+- **GitHub REST API (Octokit)**
+- Supports public repositories (no authentication required)
+
+### Video Generation
+- **Canvas (node-canvas)** – generates visual frames
+- **Text-to-Speech (TTS)** – generates narration audio
+- **FFmpeg** – assembles frames and audio into MP4 videos
+
+### Backend
+- **Node.js**
+- **Next.js API Routes**
+
+---
+
+## API Routes
+
+- `POST /api/ingest`  
+  Fetches repository structure and key files from GitHub
+
+- `POST /api/script`  
+  Uses Gemini 3 to generate the onboarding script and scene structure
+
+- `POST /api/video/render`  
+  Generates visual frames, audio narration, and assembles the final video
+
+---
+
 
 ## Getting Started
 
@@ -27,34 +132,4 @@ Create a `.env.local` file in the project root and set:
 - **`GEMINI_API_KEY`**: Your API key from Google AI Studio (required)
 - **`GITHUB_TOKEN`**: Optional GitHub personal access token for higher rate limits
 
-### API Routes
 
-- `POST /api/ingest` - Fetches repository files from GitHub
-- `POST /api/script` - Generates onboarding script using Gemini
-- `POST /api/video/render` - Video generation pipeline (returns asset structure)
-
-### Tech Stack
-
-- **Frontend**: Next.js 16, React, Tailwind CSS
-- **AI**: Google Gemini 3 (Flash/Pro)
-- **Video**: Remotion (React-based video rendering)
-- **GitHub**: Octokit REST API
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
