@@ -134,3 +134,12 @@ Create a `.env.local` file in the project root and set:
 - **`GITHUB_TOKEN`**: Optional GitHub personal access token for higher rate limits
 
 
+## Product Preview
+
+| Homepage | Generate Page |
+|---------|---------------|
+| ![Homepage](assets/homepage.png) | ![Generate Page](assets/generationpage.png) |
+
+| Example Output | Example Output (Detailed) |
+|---------------|---------------------------|
+| ![Example Output](assets/example_output.png) | ![Example Output Detailed](assets/example_output1.png) |
