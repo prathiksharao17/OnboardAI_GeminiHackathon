@@ -206,7 +206,8 @@ export async function POST(req: Request) {
     
     if (!parsed.success) {
       // Try to fix common issues: missing scenes array, missing required fields
-      const fixed = { ...json } as any;
+      const fixed = (typeof json === "object" && json !== null ? { ...(json as object) } : {}) as any;
+
       
       // Ensure scenes array exists
       if (!fixed.scenes || !Array.isArray(fixed.scenes)) {
